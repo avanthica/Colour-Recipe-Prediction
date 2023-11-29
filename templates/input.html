@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  
+	    <title>Color recipe Prediction Page</title>
+
+	    <!-- Google font -->
+	    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+	    <!-- Bootstrap -->
+	    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename ='inputstyle2.css')}}" /> 
+	    <!-- Custom stlylesheet -->
+	    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename ='inputstyle.css')}}" />
+        <style>
+            #booking{
+                background-image: url("{{ url_for('static', filename='yarn-2171040_1280.jpg') }}");
+            }
+            .booking-form .form-label 
+            {
+                color:#4fa3e3;
+            }
+            .form-bttn .submit-bttn
+            {
+                
+                color: #fff;
+	            background-color: #4fa3e3;
+	            font-weight: 300;
+	            height: 60px;
+	            font-size: 18px;
+	            border: none;
+	            width: 27%;
+                margin-top:10px;
+	            border-radius: 4px;
+	            text-transform: uppercase;   
+            }
+            .opt-ord
+            {
+                margin-top:5px;
+                margin-left:150px;
+                border-bottom-left-radius: 6px;
+	            border-bottom-right-radius: 6px;
+	            box-shadow: 1px 2px 5px -1px rgba(0,0,0,0.15),0px 4px 14px -1px rgba(0,0,0,0.10);
+                width:250px;
+                text-align:center;
+                height:25px;
+
+            }
+        </style>
+        
+    </head>
+    <body>
+        <div id="booking" class="section">
+            <div class="section-center">
+                <div class="container">
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="booking-cta">
+                                <h1><b>Color Recipe Prediction</b></h1>
+                                <p>Predicts Accurate Dye Combinations and Concentrations</p>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-md-offset-1">
+                           
+                            <div class="booking-form">
+                                <form method= "POST" action ="{{url_for('predict')}}">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                               <label class="form-label" for="order_id">Select Order ID:</label>
+                                               <select class="opt-ord" id="order_id" name="order_id">
+                                                <option value="" disabled selected>Order IDs</option>
+                                                  {% for order_id in order_ids %}
+                                                  <option value="{{ order_id }}">{{ order_id }}</option>
+                                                  {% endfor %}
+                                               </select>   
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">L value</span>
+                                                <input class="form-control" type="text" id ="L" name= "lval" placeholder="L value of LAB" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">A value</span>
+                                                <input class="form-control" type="text" id ="a" name= "aval" placeholder="A value of LAB" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">B value</span>
+                                                <input class="form-control" type="text" id ="b" name= "bval" placeholder="B value of LAB" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Material</span>
+                                                <input class="form-control" type="text" id ="substrate" name="substrate" placeholder="Type of Material" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Count Ply</span>
+                                                <input class="form-control" type="text" id ="countply" name="thrval" placeholder="Number of Threads" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Thickness</span>
+                                                <input class="form-control" type="text" id ="thickness" name="thickval" placeholder="Thickness of each thread" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class = "row">
+                    
+                                        <div class="col-md-6">
+                                            <div class="form-btn">
+                                                <input type ="submit" class="submit-btn" value="Predict">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                                
+                                <div class="form-bttn">
+                                    <a href="codetopredict" >
+                                        <button class="submit-bttn">Back</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Add an event listener to the order_id select element
+            document.getElementById("order_id").addEventListener("change", function() {
+                // Fetch the selected order ID
+                var selectedOrderID = this.value;
+    
+                // Use AJAX to fetch the order details based on the selected _id
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "/get_order/" + selectedOrderID, true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var order = JSON.parse(xhr.responseText);
+    
+                        // Fill the form fields with the retrieved data
+
+                        document.getElementById("L").value = order.L;
+                        document.getElementById("a").value = order.a;
+                        document.getElementById("b").value = order.b;
+                        document.getElementById("substrate").value = order.substrate;
+                        document.getElementById("countply").value = order.countply;
+                        document.getElementById("thickness").value = order.thickness;
+
+                    }
+                };
+                xhr.send();
+            });
+        </script>
+    </body>
+</html>

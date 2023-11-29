@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+     /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    display: flex; /* Use flexbox to center the container */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    min-height: 100vh; /* Ensure the body covers the full viewport height */
+}
+
+/* Style for the square container div */
+.container {
+    display: flex; /* Create a flex container */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    background-color: white; /* White background color for the container */
+    text-align: center;
+    padding: 20px;
+    box-shadow: inset 0px 0px 15px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    width: 700px; /* Set a fixed width for the container */
+    height: 350px; /* Set a fixed height for the container */
+}
+
+/* Style for the heading */
+h1 {
+    color: black; /* Adjust heading text color */
+}
+
+/* Style for individual square divs */
+.box-container {
+    display: flex; /* Create a flex container for the square divs */
+    justify-content: space-between; /* Space divs evenly within the container */
+    width: 100%; /* Full width of the container */
+}
+
+.box {
+    width: 100px; /* Equal width for each div */
+    height: 100px; /* Equal height for each div */
+    text-align: center;
+    flex: 1; /* Allow divs to take equal space within the container */
+    margin: 10px; /* Space between divs */
+    padding: 20px;
+}

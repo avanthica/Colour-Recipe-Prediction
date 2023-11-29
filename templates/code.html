@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function codeit()
+            {
+                let x = document.form['code']['codecred'].value;
+
+                if (x == '')
+                {
+                    alert('Enter CSR code credentials to predict');
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        </script>
+        <style>
+        
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            #color-box {
+                width: 500px;
+                height: 400px;
+                background-color:#fff; 
+                box-shadow: 1px 0px 15px 10px rgba(0, 0, 0, 0.1);
+            }
+            h1{
+                text-align: center;
+                margin-top: 50px;
+            }
+            .csrcode
+            {
+                margin-left: 50px;
+            }
+            .labelform
+            {
+                margin-left: 80px;
+                padding: 10px;
+            }
+            .btn
+            {
+                margin-left:200px;
+                margin-top: 40px;
+                width:100px;
+                height:30px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+    
+            }
+            .btn:hover
+            {
+                background-color: #0056b3;
+    
+            }
+            .cde
+            {
+                margin-top: 50px;
+            }
+            .dt
+            {
+                text-align: center;
+            }
+            .form-bttn .submit-bttn
+            {
+                
+                margin-left:200px;
+                margin-top: 40px;
+                width:100px;
+                height:30px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;   
+            }
+        </style>
+    </head>
+    <body>
+        <div id="color-box">
+            <h1>Enter CSR code for prediction</h1>
+            <div class="dt">
+                {% if data != ''%}
+               {{data}}
+            {%endif%}
+            </div>
+            
+            <br><br>
+            <form class="cde" name ="code" method= "POST" onsubmit="return codeit()" action = "{{url_for('inputs')}}">
+            <label for="codecred" class="labelform"><b>CSR CODE</b></label>    
+            <input class="csrcode" type="password" name="codecred" placeholder="Enter credentials"><br><br>
+    
+            <input class="btn" type="submit" value="Enter" >
+            </form>
+            <div class="form-bttn">
+                <a href="signin" >
+                    <button class="submit-bttn">Back</button>
+                </a>
+                </div>
+        </div>
+    </body>
+    </html>

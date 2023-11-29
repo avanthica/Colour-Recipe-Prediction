@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <title>Color Recipe Prediction</title>
+        <link rel = "stylesheet" type="text/css" href = "{{url_for('static', filename ='homesss.css')}}">
+        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+        <style>
+            body{
+                background-image: url("{{ url_for('static', filename='coats thr.jpg') }}");
+                
+            }
+            
+        </style>
+    </head>
+    <body >
+            <div class="cate">
+                <!-- <img class="bk" src="{{ url_for('static', filename ='coats thr.jpg') }}" alt="shades" width="1536" height="746">--> 
+                <div class = "centered"><b>COLOUR RECIPE PREDICTION</b></div>
+                    <div class="navi">
+                            <a href="/" class="menuss">Home</a>
+                            <a href="/gallery" class="galls">&nbsp Gallery </a>
+                            <a href="/about" class="abouts">&nbsp About </a>
+                            <a href="/contact" class="conts">&nbsp Contact </a>
+                            <a href="signup" class="orderrs">&nbsp Sign Up </a>
+                            <a href="signin" class = "nowords" >&nbsp Sign In </a>
+                    </div>
+                </div>
+                <!--<div class="orderbut">
+                    <a href="codetopredict"><button id="orderr">PREDICTIONS</button></a>  
+                </div>-->
+           </div>
+           
+               <!-- <a href="dyes"><button class="noword">Order</button></a>-->
+        <script src="{{ url_for('static', filename='homejs.js') }}"></script>
+    </body>
+    
+</html>

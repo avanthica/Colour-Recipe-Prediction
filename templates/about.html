@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>About</title>
+        <link rel = "stylesheet" type="text/css" href = "{{url_for('static', filename ='homesss.css')}}">
+        <link rel = "stylesheet" type="text/css" href = "{{url_for('static', filename ='abtstyle.css')}}">
+    </head>
+    <body>
+        <div class="navi">
+            <a href="/" class="menuss">Home</a>
+            <a href="/gallery" class="galls">&nbsp Gallery </a>
+            <a href="/about" class="abouts">&nbsp About </a>
+            <a href="/contact" class="conts">&nbsp Contact </a>
+            
+        </div>
+        <h3>About Us</h3>
+        <h1 class="subhead">The Color Recipe Prediction</h1>
+        <div class="container">
+            <div class="abtcont">
+                <p>The art and science of color mixing and creation have long fascinated artists, designers, and scientists alike. The ability to predict color recipes accurately is crucial in a wide range of applications, including digital design, cosmetics, printing, and industrial coatings. This project presents a data-driven approach to predicting color recipes, utilizing machine learning algorithms. However, achieving precise and consistent color outcomes often proves challenging due to various factors, such as variations in raw materials, environmental conditions, and the inherent complexity of human perception. Our proposed method leverages large-scale color datasets, comprising absorption coefficient values, LAB, RGB, and colorant compositions, to train machine learning models. Additionally, we integrate computer vision approaches, enabling the model to analyze images and extract relevant color features.
+                    </p>
+            </div>
+            <div class="row">
+                <div class="column">
+                  <img src="https://www.coats.com/-/media/Coats/Product/Astra/Hero/1240_338_Astra.jpg?rev=c193ae5bbf2f420fa3286194a941f210&width=600&height=338&op=crop" alt="coats threads 1" style="width:100%">
+                </div>
+                <div class="column">
+                  <img src="https://www.coats.com/-/media/Coats/Product/Epic-EcoVerde-AS/epic-ecoverde-as.jpg?rev=4bc1efe884e34c07b8e455570a91db06&width=600&height=338&op=crop" alt="coats threads 2" style="width:100%">
+                </div>
+              </div>
+        </div>
+       <footer> 
+        Color Recipe Prediction
+       </footer>
+    </body>
+</html>

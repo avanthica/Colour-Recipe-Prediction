@@ -1,0 +1,246 @@
+display-flex, .display-flex, .display-flex-center, .signup-content 
+{
+    display: flex;
+    display: -webkit-flex; 
+}
+
+.hide-text-animation {
+    animation-name: hideText;
+    animation-duration: 10s;
+    animation-fill-mode:forwards;
+    opacity: 1;
+  }
+  
+@keyframes hideText {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+
+h2 
+{
+    line-height: 1.66;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #222;
+    font-family: Poppins;
+    font-size: 36px; 
+}
+
+.signupbody
+{
+    font-size: 13px;
+    line-height: 1.8;
+    color: #222;
+    background: #f8f8f8;
+    font-weight: 400;
+    font-family: Poppins;
+    background-image: url("{{url_for('static', filename ='threadsss.jpg')}}");
+    background-size:cover;  
+}
+
+.container {
+    width: 900px;
+    background: #fff;
+    margin: 0 auto;
+    margin-top: 80px;
+    height:600px;
+    box-shadow: inset 0px 0px 15px 10px rgba(0, 0, 0, 0.1);
+    
+    border-radius: 50px;
+    /* -moz-border-radius: 20px;
+    -webkit-border-radius: 30px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;  */
+}
+
+.signup 
+{
+    margin-bottom: 150px; 
+}
+  
+.signup-content 
+  {
+    padding: 60px 0;
+    padding-left:30px;
+
+  }
+
+.signup-form, .signin-form, .signin-image 
+{
+    width: 100%;
+    overflow: hidden;  
+}
+  
+.form-title
+{
+    margin-bottom: 33px; 
+}
+  
+.form-submit {
+    display: inline-block;
+    background: #6dabe4;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 15px 39px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    margin-top: 25px;
+    margin-left: 40%;
+    cursor: pointer; 
+}
+
+.form-submit:hover 
+{
+    background: #4292dc; 
+}
+
+.signup-image-link {
+    font-size: 14px;
+    color: #222;
+    text-align: center;
+    display: inline-block; 
+    
+  }
+
+  
+.signup-form 
+{
+  margin-left: 75px;
+  margin-right: 75px;
+  padding-left: 34px; 
+}
+
+.register-form 
+{
+  width: 100%; 
+}
+
+.form-group 
+{
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden; 
+}
+.form-group:last-child 
+{
+    margin-bottom: 0px; 
+    padding-left: 42%;
+
+}
+
+input 
+{
+    width: 65%;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #999;
+    padding: 6px 30px;
+    font-family: Poppins;
+    box-sizing: border-box; 
+    margin-left: 17%;
+}
+  
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -ms-box-shadow: none !important; }
+
+
+label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  color: #222;
+  margin-left: 10%;
+  padding-left: 60px; 
+  padding-top: 5px; }
+
+input::-webkit-input-placeholder {
+    color: #999; }
+
+    input:focus::-webkit-input-placeholder {
+      color: #222; 
+    }
+
+
+    .form-checkbox input {
+      position: absolute !important;
+      margin-left: -9999px !important;
+      visibility: hidden !important;
+    }
+    
+   .form-checkbox label {
+      position: relative;
+      padding-top: 4px;
+      padding-left: 30px;
+      font-weight: 700;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #191a1e;
+    }
+    
+    .form-checkbox label+label {
+      margin-left: 15px;
+    }
+    
+    .form-checkbox input+span {
+      position: absolute;
+      left: 2px;
+      top: 4px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 2px solid #dfe5e9;
+      border-radius: 50%;
+    }
+    
+    .form-checkbox input+span:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0px;
+      height: 0px;
+      border-radius: 50%;
+      background-color: #4fa3e3;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      -webkit-transition: 0.2s all;
+      transition: 0.2s all;
+    }
+    
+    .form-checkbox input:not(:checked)+span:after {
+      opacity: 0;
+    }
+    
+    .form-checkbox input:checked+span:after {
+      opacity: 1;
+      width: 10px;
+      height: 10px;
+    }
+ 
+
+  
+
+
+
+
+
+

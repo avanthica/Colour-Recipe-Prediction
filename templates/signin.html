@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{url_for('static', filename ='signinstyle.css')}}">
+        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+        <title>Sign in</title>
+        <link rel = "stylesheet" type="text/css" href = "{{url_for('static', filename ='homesss.css')}}">
+        <style>
+            .signinbody
+            {
+               background-image: url("{{ url_for('static', filename='yarn.jpg') }}");
+            }
+            .hide-text-animation {
+                font-size:x-large;
+                text-align:center;
+                font-family: Poppins;
+                animation-name: hideText;
+                animation-duration: 10s;
+                animation-fill-mode: forwards;
+                opacity: 1;
+              }
+              
+              @keyframes hideText {
+                0% {
+                  opacity: 1;
+                }
+                100% {
+                  opacity: 0;
+                  display: none;
+                }
+              }
+        </style>
+        <script type="text/javascript">
+        
+            function login()
+            {
+    
+                if (($("#email").val() == "") || ($("#password").val() == '')){
+    
+                    $(".error_message").text("All fields are required.");
+                    $(".error_message").show(0).delay(3000).hide(0);
+                }
+                else {
+                    var data = new FormData();
+                    data.append('email', $("#email").val());
+                    data.append('password', $("#password").val());
+                    $.ajax({
+                        type: 'POST',
+                        enctype: 'multipart/form-data',
+                        url: '/signin',
+                        processData: false,
+                        cache: false,
+                        timeout: 800000,
+                        contentType: false,
+                        data: data,
+                        success: function(response) {
+                            var data = JSON.parse(response);
+                            if (data['status'] == true){
+                                $('#login_message').text("Welcome " + data['username'] +", Login Successfully.");
+                                $('#login_message').show(0).delay(3000).hide(0);
+                            } else{
+                                $(".error_message").text("Incorrect Email and Password.");
+                                $(".error_message").show(0).delay(3000).hide(0);
+                            }
+                        } 
+                    });
+                }
+            }
+    
+        </script>
+    </head>
+    <body class = "signinbody">
+        <div class="navi">
+            <a href="/" class="menuss">Home</a>
+            <a href="/gallery" class="galls">&nbsp Gallery </a>
+            <a href="/about" class="abouts">&nbsp About </a>
+            <a href="/contact" class="conts">&nbsp Contact </a>
+            <a href="signup" class="orderrs">&nbsp Sign Up </a>
+            
+    </div>
+        <div class="container">
+            <div class="signin-content">
+                <div class="signin-form">
+                    <div class = "hide-text-animation">
+                        {% if data != ''%}
+                           {{data}}
+                        {% endif%}
+                    </div>
+                     <br>
+                    <h2 class="form-title">Sign In</h2>
+                    <form method="POST" class="register-form" id="login-form" onsubmit="login()" action ="{{url_for('login')}}">
+                        <div class="form-group">
+                            <label for="email"><iconify-icon icon="zmdi:email-open"></iconify-icon></label>
+                            <input type="text" name="email" id="your_name" placeholder="Email" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><iconify-icon icon="zmdi:lock"></iconify-icon></label>
+                            <input type="password" name="password" id="your_pass" placeholder="Password" required/>
+                        </div>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+            <a href="signup" class="signin-image-link">Create an account</a>
+        </div>
+
+        
+
+    </body>
+</html>

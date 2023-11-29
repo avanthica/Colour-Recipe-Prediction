@@ -1,0 +1,54 @@
+body
+        {
+            background-color:ghostwhite;
+        }
+        footer {
+            position: fixed;
+            bottom:0;
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            font-size:larger;
+         }
+         h3
+         {
+            margin-top: 60px ;
+            text-align: center;
+            font-size: xx-large;
+            margin-bottom: 0px;
+         }
+         .subhead
+         {
+            text-align: center;
+            font-size: larger;
+            margin-bottom: 0px;
+         }
+         .abtcont
+         {
+            padding-left: 70px;
+            width:90%;
+            text-align: justify;
+            font-size: 25px;
+         }
+         img{
+            border-radius: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+         }
+         .column {
+            float:left;
+            width: 40%;
+            padding-right: 30px;
+            border-radius: 20px;
+          }
+          .row
+          {
+            padding-left: 10%;
+          }
+          /* Clear floats after image containers */
+          .row::after {
+            content: "";
+            clear: both;
+            display: table;
+          }

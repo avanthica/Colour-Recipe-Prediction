@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	    <!-- Google font -->
+	    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+	    <!-- Bootstrap -->
+	    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename ='inputstyle2.css')}}" /> 
+
+        <link type="text/css" rel="stylesheet" href="{{url_for('static', filename ='inputstyle.css')}}" />
+        <title>Customer Order</title>
+        <style>
+            #booking{
+                background-image: url("{{ url_for('static', filename='splashes.jpg') }}");
+            }
+            .booking-form .form-label 
+            {
+                color:#4fa3e3;
+            }
+            .form-bttn .submit-bttn
+            {
+                
+                color: #fff;
+	            background-color: #4fa3e3;
+	            font-weight: 400;
+	            height: 65px;
+	            font-size: 18px;
+	            border: none;
+	            width: 30%;
+	            border-radius: 4px;
+	            text-transform: uppercase;  
+                margin-top:10px; 
+            }
+        </style>
+        <script>
+            function validate()
+            {
+                let name = document.form['ord']['username'].value;
+                let email = document.form['ord']['email'].value;
+                let supdate = document.form['ord']['duedate'].value;
+                let phnum = document.form['ord']['phnum'].value;
+                let address = document.form['ord']['address'].value;
+                let image = document.form['ord']['image'].value;
+                let hex = document.form['ord']['hexcode'].value;
+                let sub = document.form['ord']['substrate'].value;
+                let count = document.form['ord']['nothr'].value;
+                let thickness = document.form['ord']['email'].value;
+
+                if (name == "" || email == "" || supdate == "" || phnum =="" || address =="" || sub == ""|| count == "" || thickness == " ")
+                {
+                    alert("All fields are required");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            window.onload=function()
+            {
+                var today = new Date().toISOString().split('T')[0];
+                document.getElementsByName("duedate")[0].setAttribute('min', today);
+            }
+        </script>
+
+    </head>
+    <body>
+        <div id="booking" class="section">
+            <div class="section-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="booking-cta">
+                                <h1><b>Order Now</b></h1>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-md-offset-1">
+                            <div class="booking-form">
+                                <form name ="ord" method= "POST" onsubmit="return validate()" action="{{url_for('ordered')}}" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Customer Name</span>
+                                                <input class="form-control" type="text" name= "username" placeholder="Your Name" value="{{ext_name}}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Email</span>
+                                                <input class="form-control" type="email" name= "email" placeholder="Your Email" value="{{ext_email}}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Delivery Date</span>
+                                                <input class="form-control" type="date" name= "duedate" placeholder="Delivery Date" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Phone Number</span>
+                                                <input class="form-control" type="tel" name= "phnum" placeholder="888-888-8888" pattern="\d{3}-\d{3}-\d{4}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Address</span>
+                                                <input class="form-control" type="text" name= "address" placeholder="Delivery Address" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Quantity</span>
+                                                <input class="form-control" type="number" name= "quantity" min="1" max="10000" step="1" placeholder="Quantity" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-checkbox">
+                                            <span class="form-label">Material</span><br><br>
+                                            <label for="cotton">
+                                                <input type="radio" id="cotton" value = "Cotton" name="substrate">
+                                                <span></span>Cotton
+                                            </label>
+                                            <label for="linen">
+                                                <input type="radio" id="linen" value="Linen" name="substrate">
+                                                <span></span>Linen
+                                            </label>
+                                            <label for="rayon">
+                                                <input type="radio" id="rayon" value="Rayon" name="substrate" >
+                                                <span></span>Rayon
+                                            </label>
+                                            <label for="polyester">
+                                                <input type="radio" id="polyester" value="Polyester" name="substrate">
+                                                <span></span>Polyester
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Count Ply</span>
+                                                <input class="form-control" type="number" min="1" max = "3" step="1" name="nothr" placeholder="Number of Threads" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Thickness</span>
+                                                <input class="form-control" type="text" name="thickness" placeholder="Thickness of each thread (in mm)" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <span class="form-label">Upload Shade</span>
+                                                <br><br>
+                                                <input  type="file" name = "file">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <span class="form-label">OR</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Shade Code</span>
+                                                <input class="form-control" type="text" name="hexcode" placeholder="Desired Shade Code">
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                    <div class="form-btn">
+                                        <input type ="submit" class="submit-btn" value="Order">
+                                    </div>
+                                </div>
+                                </div>
+                                </form>
+                                <div class="form-bttn">
+                                    <a href="signin" >
+                                        <button class="submit-bttn">Back</button>
+                                    </a>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

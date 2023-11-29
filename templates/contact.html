@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename ='constyle.css')}}" />
+    <link rel = "stylesheet" type="text/css" href = "{{url_for('static', filename ='homesss.css')}}">
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <title>Contact Us</title>
+</head>
+<body>
+    <div class="navi">
+        <a href="/" class="menuss">Home</a>
+        <a href="/gallery" class="galls">&nbsp Gallery </a>
+        <a href="/about" class="abouts">&nbsp About </a>
+        <a href="/contact" class="conts">&nbsp Contact </a>
+        
+    </div>
+    <div class="container">
+        <div class="left-col">
+            <!-- Left Column Content (Contact Form) -->
+            <h2>Send us a message</h2>
+            <form method= "POST" action ="{{url_for('feeds')}}">
+                <div class="name-email-group">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" placeholder="Your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Write your message" required></textarea>
+                </div>
+
+                <input type="submit" value="Send Message">
+            </form>
+            <div>
+                {% if data != ''%}
+                  {{data}}
+                {%endif%}
+            </div>
+        </div>
+        <div class="right-col">
+            <!-- Right Column Content (Contact Info) -->
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <ul class="list-unstyled">
+                    <li class="d-flex">
+                        <iconify-icon icon="mdi:location"></iconify-icon>
+                        <span class="text">Madurai</span>
+                    </li>
+                    <br>
+                    <li class="d-flex">
+                        <iconify-icon icon="fluent:call-12-filled"></iconify-icon>
+                        <span class="text">+91 9675841235</span>
+                    </li>
+                    <br>
+                    <li class="d-flex">
+                        <iconify-icon icon="ic:outline-email"></iconify-icon>
+                        <span class="text">info@colorrecipe.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

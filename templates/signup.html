@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{url_for('static', filename ='signstyle.css')}}">
+        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+        <title>Register</title>
+        <link rel = "stylesheet" type="text/css" href = "{{url_for('static', filename ='homesss.css')}}">
+        <style>
+            .signupbody{
+                background-image: url("{{ url_for('static', filename='threadsss.jpg') }}");
+            }
+            .hide-text-animation {
+                font-size:x-large;
+                text-align: center;
+                font-family: Poppins;
+                animation-name: hideText;
+                animation-duration: 10s;
+                animation-fill-mode: forwards;
+                opacity: 1;
+              }
+              
+              @keyframes hideText {
+                0% {
+                  opacity: 1;
+                }
+                100% {
+                  opacity: 0;
+                  display: none;
+                }
+              }
+        </style>
+        <script>
+
+            function registers()
+            {
+                let name = document.forms["signupform"]["username"].value;
+                let email = document.forms["signupform"]["email"].value;
+                let passwd = document.forms["signupform"]["password"].value;
+                let confirmpass = document.forms["signupform"]["confirmpass"].value;
+
+                if(name == '' || email == '' || passwd == '' || confirmpass == '')
+                {
+                    alert("All fields are required");
+                    $("#error_message").show(0).delay(3000).hide(0);
+                    return false;
+                }
+                else if(passwd != confirmpass)
+                {
+                    alert("Passwords are not same");
+                    $("#error_message").show(0).delay(3000).hide(0);
+                    return false;
+                }
+                else
+                {
+                    var data = new  FormData();
+                    data.append('username',name);
+                    data.append('email',email);
+                    data.append('password',passwd);
+                    $.ajax({
+                        type: 'POST',
+                        enctype: 'multipart/form-data',
+                        url: '/register',
+                        processData: false,
+                        cache: false,
+                        timeout: 800000,
+                        contentType: false,
+                        data: data,
+                        success: function(response) {
+                            var data = JSON.parse(response);
+                            if (data == true){
+                                $('#signup_message').show(0).delay(3000).hide(0);
+    
+                                setTimeout(function() 
+                                {
+                                    window.location = "/";
+                                }, 3000);
+    
+                            } else{                           
+                                $("#error_message").text("Email Id was already exists.");
+                                $("#error_message").show(0).delay(3000).hide(0);
+                            }
+                        }
+                    });
+                    return true;
+
+                }
+            }
+        </script>
+
+    </head>
+    <body class="signupbody">
+        <div class="navi">
+            <a href="/" class="menuss">Home</a>
+            <a href="/gallery" class="galls">&nbsp Gallery </a>
+            <a href="/about" class="abouts">&nbsp About </a>
+            <a href="/contact" class="conts">&nbsp Contact </a>
+            <a href="signin" class = "nowords" >&nbsp Sign In </a>
+    </div>
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <div class ="hide-text-animation">
+                        {% if data != ''%}
+                           {{data}}
+                        {% endif%}
+                    </div>
+                    <h2 class="form-title">Sign up</h2>
+                    <form name ="signupform" method= "POST" onsubmit="return registers()"action ="{{url_for('register')}}" class="register-form" id="register-form">
+                        <div class="form-group">
+                            <label for="username"><iconify-icon icon="zmdi:account"></iconify-icon></label>
+                            <input type="text" name="username" id="name" placeholder="Your Name" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><iconify-icon icon="zmdi:email-open"></iconify-icon></label>
+                            <input type="email" name="email" id="email" placeholder="Your Email" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><iconify-icon icon="zmdi:lock"></iconify-icon></label>
+                            <input type="password" name="password" id="pass" placeholder="Password" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmpass"><iconify-icon icon="zmdi:lock-outline"></iconify-icon></label>
+                            <input type="password" name="confirmpass" id="re_pass" placeholder="Repeat your password" required/>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-checkbox">
+                                <span class="form-label"></span><br><br>
+                                <label for="internal">
+                                    <input type="radio" id="internal" value = "Internal" name="usertype" required>
+                                    <span></span>Internal Use Only
+                                </label>
+                                <label for="external">
+                                    <input type="radio" id="external" value="External" name="usertype" required>
+                                    <span></span>External Use(Order)
+                                </label>
+                            </div>
+                        </div>  
+                        
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                        </div>
+                        
+                    </form>
+                    <a href="signin" class="signup-image-link">I am already member</a>
+
+                </div>
+                
+            </div>
+        </div>
+        
+
+    </body>
+</html>

@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    margin-top:140px;
+    height: 500px;
+    max-width: 70%;
+    background-color: #fff;
+    box-shadow: 1px 0px 15px 10px rgba(0, 0, 0, 0.1);
+}
+
+.left-col,
+.right-col {
+    padding: 20px;
+}
+
+.left-col {
+    flex: 2.5; /* 66% width */
+}
+
+.right-col {
+    flex: 0.9; /* 33% width */
+    background-color: #35477d; /* Background color set to #35477d */
+    color: white; /* Font color set to white */
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-family: 'Helvetica', sans-serif; /* Change the label font here */
+    color:#222325;
+}
+
+input[type="text"],
+textarea {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none; /* Remove the default input focus outline */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-bottom: 2px solid #007bff; /* Highlight the input on focus */
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: #ccc;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin: 0;
+}
+
+/* Custom CSS for arranging Name and Email fields on the same line */
+.name-email-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.name-email-group .form-group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+/* Custom CSS for the contact information section */
+.contact-info {
+    padding: 20px;
+    /*background-color: #fff;*/
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.contact-info .text {
+    margin-left: 10px;
+}
+
+/* Custom CSS for icons */
+.contact-info iconify-icon {
+    font-size: 16px;
+    vertical-align: middle;
+}
