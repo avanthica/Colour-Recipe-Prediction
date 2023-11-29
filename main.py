@@ -14,7 +14,7 @@ import json
 
 model = pickle.load(open('clrrecpred.pkl','rb'))
 
-database = pymongo.MongoClient('mongodb connection url to be entered')
+database = pymongo.MongoClient('mongodb connection url to be entered') # mongodb connection 
 usersdb = database['customers']
 users = usersdb.cust #external users customers for order
 intusers = usersdb.intuser #internal users for prediction
